@@ -76,7 +76,7 @@ export default function CitizenMyComplaints() {
   useEffect(() => {
     const fetchRealData = async () => {
       try {
-    const response = await fetch("http://localhost:8000/api/complaints/all");
+    const response = await fetch(`${import.meta.env.VITE_API_URL}/api/complaints/all`)
         const result = await response.json();
 
         if (result.status === "success" && result.data) {
@@ -286,7 +286,7 @@ export default function CitizenMyComplaints() {
               <div style={{ width:"100%", height:"100%", background:`linear-gradient(135deg,${SEV[selected.severity].color}33,#111827)`, display:"flex", alignItems:"center", justifyContent:"center", fontSize:50 }}>
                 
                  {selected.imageUrl ? (
-                   <img src={`http://localhost:8000/static/${selected.imageUrl}`} alt="Evidence" style={{width: '100%', height: '100%', objectFit: 'cover'}} 
+                   <img src={`${import.meta.env.VITE_API_URL}/static/${selected.imageUrl}`} alt="Evidence" style={{width: '100%', height: '100%', objectFit: 'cover'}} 
                    onError={(e) => { e.target.style.display = 'none'; e.target.nextSibling.style.display = 'flex'; }} />
                  ) : null}
                  <span style={{display: selected.imageUrl ? 'none' : 'block'}}>📸</span>

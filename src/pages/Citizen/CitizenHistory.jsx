@@ -116,7 +116,7 @@ function ComplaintCard({ complaint, index }) {
          {complaint.image_url ? (
   <img src={complaint.image_url.startsWith('http') 
     ? complaint.image_url 
-    : `http://localhost:8000/uploads/${complaint.image_url}`} 
+    :`${import.meta.env.VITE_API_URL}/uploads/${complaint.image_url}`}
     alt="complaint" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
 ) : (
   <FaImage style={{ color: '#90a0b2', fontSize: '32px' }} />
@@ -244,7 +244,7 @@ export default function CitizenHistory() {
     setLoading(true);
     setError('');
     try {
-      const res = await fetch('http://localhost:8000/api/complaints/authority/all');
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/complaints/authority/all`)
       const data = await res.json();
       if (data.data) {
         setComplaints(data.data);

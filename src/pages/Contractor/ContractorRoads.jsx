@@ -24,7 +24,7 @@ export default function ContractorAllComplaints() {
   useEffect(() => {
     const fetchComplaints = async () => {
       try {
-        const response = await fetch(`http://localhost:8000/api/complaints/contractor/${encodeURIComponent(contractorName)}`);
+        const response = await fetch(`${import.meta.env.VITE_API_URL}/api/complaints/contractor/${encodeURIComponent(contractorName)}`)
         
         if (response.ok) {
           const data = await response.json();
@@ -54,7 +54,7 @@ export default function ContractorAllComplaints() {
       comp.id === complaintId ? { ...comp, status: 'Resolved' } : comp
     ));
     try {
-      await fetch(`http://localhost:8000/api/complaints/${complaintId}/status`, {
+      await fetch(`${import.meta.env.VITE_API_URL}/api/complaints/${complaintId}/status`, {
         method: 'PATCH',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ status: 'Resolved' })
@@ -104,7 +104,7 @@ const handlePhotoSubmit = async () => {
     formData.append('fix_photo', compressedFile);
     formData.append('fix_note', fixNote);
 
-    const res = await fetch(`http://localhost:8000/api/complaints/${activeComplaint.id}/fix-photo`, {
+    const res = await fetch(`${import.meta.env.VITE_API_URL}/api/complaints/${activeComplaint.id}/fix-photo`, {
       method: 'POST',
       body: formData
     });

@@ -91,7 +91,7 @@ export default function ContractorDashboard() {
   const [roadsLoading, setRoadsLoading] = useState(true);
 
 useEffect(() => {
-  fetch(`http://localhost:8000/api/roads/contractor/${encodeURIComponent(contractorName)}`)
+  fetch(`${import.meta.env.VITE_API_URL}/api/roads/contractor/${encodeURIComponent(contractorName)}`)
     .then(r => r.json())
     .then(data => {
       setRealRoads(data.data || []);
@@ -101,7 +101,7 @@ useEffect(() => {
 }, [contractorName]);
 
 useEffect(() => {
-  fetch(`http://localhost:8000/api/complaints/contractor/${encodeURIComponent(contractorName)}`)
+ fetch(`${import.meta.env.VITE_API_URL}/api/complaints/contractor/${encodeURIComponent(contractorName)}`)
     .then(r => r.json())
     .then(data => {
       setRealComplaints(data.data || [])

@@ -190,7 +190,7 @@ const QuickCard = ({ icon, title, desc, bg, border, titleColor, onClick}) => (
   const [stats, setStats] = useState({ pending: 0, inProgress: 0, resolved: 0, escalated: 0 })
 
   useEffect(() => {
-    fetch('http://localhost:8000/api/complaints/authority/all')
+   fetch(`${import.meta.env.VITE_API_URL}/api/complaints/authority/all`)
       .then(r => r.json())
       .then(data => {
         const all = data.data || []

@@ -46,7 +46,7 @@ export default function App() {
   })
 
   useEffect(() => {
-    fetch('http://localhost:8000/api/budget/summary/Madhya Pradesh')
+       fetch(`${import.meta.env.VITE_API_URL}/api/budget/summary/Madhya Pradesh`)
       .then(r => r.json())
       .then(data => {
         const roads = data.data || []

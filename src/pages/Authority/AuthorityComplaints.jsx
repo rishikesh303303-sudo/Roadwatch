@@ -63,7 +63,7 @@ export default function AuthorityComplaints() {
   const [page, setPage] = useState(1);
 
 useEffect(() => {
-  fetch('http://localhost:8000/api/complaints/authority/all')
+  fetch(`${import.meta.env.VITE_API_URL}/api/complaints/authority/all`)
     .then(res => res.json())
     .then(data => {
       setComplaints(data.data || []);

@@ -22,10 +22,10 @@ export default function CitizenChat() {
   setIsLoading(true)
 
   try {
-    const response = await fetch('http://localhost:8000/api/chatbot/chat', {
+    const response =await fetch(`${import.meta.env.VITE_API_URL}/api/chatbot/chat`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ message: text, language: activeLang }) // User ka text aur bhasha backend ko bhejo
+      body: JSON.stringify({ message: text, language: activeLang })
     })
     const data = await response.json()
     const botReply = data.reply || 'Sorry, I could not process your request.';
